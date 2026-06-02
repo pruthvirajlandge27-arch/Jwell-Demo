@@ -1,0 +1,18 @@
+{
+  "name": "bhamare-jewellers",
+  "version": "1.0.0",
+  "description": "Bhamare Jewellers website and admin panel",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\" \"npm run admin\"",
+    "server": "cd server && npm run dev",
+    "client": "cd client && npm run dev",
+    "admin": "cd admin && npm run dev -- --port 5174"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
