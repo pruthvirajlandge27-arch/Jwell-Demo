@@ -36,7 +36,7 @@ const AdminLogin = () => {
       
       <div className="card w-full max-w-md relative z-10 border-gold-primary/30 bg-admin-card/90 backdrop-blur">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-heading text-gold-primary mb-2">Bhamare Jewellers</h1>
+          <h1 className="text-3xl font-heading text-gold-primary mb-2">Kubde Jewellers</h1>
           <p className="text-text-muted">Admin Portal</p>
         </div>
         

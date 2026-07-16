@@ -4,22 +4,24 @@
 
 @layer base {
   body {
-    @apply bg-gradient-to-br from-[#120002] via-[#240307] to-black text-white font-body m-0 p-0 overflow-x-hidden;
+    @apply bg-bg-primary text-text-primary font-body m-0 p-0 overflow-x-hidden;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading text-white;
+    @apply font-heading text-text-primary;
+  }
+  /* Accessible focus ring for all interactive elements */
+  *:focus-visible {
+    outline: 2px solid #C9A84C;
+    outline-offset: 2px;
   }
 }
 
 @layer components {
   .btn-gold {
-    background: linear-gradient(to right, #D4AF37, #F3C64F, #B8960C);
-    border: 1px solid rgba(243, 198, 79, 0.2);
-    @apply text-black font-label font-semibold tracking-wider py-3.5 px-8 rounded-full transition-all duration-300 uppercase text-xs shadow-[0_4px_20px_rgba(212,175,55,0.25)] hover:shadow-[0_4px_30px_rgba(212,175,55,0.45)] hover:scale-[1.03] active:scale-[0.98] cursor-pointer;
+    @apply bg-gold-primary text-white font-label font-medium tracking-wide py-3 px-6 rounded transition-all duration-200 cursor-pointer hover:bg-gold-dark hover:-translate-y-0.5;
   }
   .btn-outline {
-    border: 1px solid rgba(212, 175, 55, 0.5);
-    @apply bg-transparent hover:bg-gold-primary/10 text-gold-primary font-label font-semibold tracking-wider py-3.5 px-8 rounded-full transition-all duration-300 uppercase text-xs hover:shadow-[0_4px_20px_rgba(212,175,55,0.15)] hover:scale-[1.03] active:scale-[0.98] cursor-pointer;
+    @apply bg-transparent text-gold-primary border border-gold-primary font-label font-medium tracking-wide py-3 px-6 rounded transition-all duration-200 cursor-pointer hover:bg-gold-primary/10 hover:-translate-y-0.5;
   }
   .glass-premium {
     background: rgba(26, 2, 4, 0.45);
@@ -79,10 +81,10 @@
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #120002;
+  background: #F8F6F2;
 }
 ::-webkit-scrollbar-thumb {
-  @apply bg-gold-primary/40 rounded-full;
+  @apply bg-gold-primary/60 rounded-full;
 }
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-gold-primary;

@@ -5,7 +5,7 @@ const TrustBar = () => {
     { icon: '🏆', value: '500+', label: 'Happy Customers' },
     { icon: '💍', value: '7', label: 'Collections' },
     { icon: '✅', value: '100%', label: 'Certified Purity' },
-    { icon: '📍', value: '1995', label: 'Akola Since' },
+    { icon: '📍', value: '1937', label: 'Legacy Since' },
   ];
 
   return (

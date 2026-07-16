@@ -7,17 +7,22 @@ export default {
   theme: {
     extend: {
       colors: {
-        'gold-primary': '#D4AF37',
+        'gold-primary': '#C9A84C',
         'gold-dark': '#B8960C',
         'gold-light': '#F5E6A3',
-        'gold-accent': '#F3C64F',
-        'deep-maroon': '#2C0A0A',
+        'gold-accent': '#C9A84C',
+        'deep-maroon': '#4A0E17',
         'wine-dark': '#140003',
         'wine-medium': '#2D050B',
         'wine-light': '#4A0E17',
+        'bg-primary': '#FFFFFF',
+        'bg-secondary': '#F8F6F2',
+        'bg-dark': '#4A0E17',
+        'text-primary': '#1A1A1A',
+        'text-inverse': '#FFFFFF',
         'rich-cream': '#FDF6E3',
         'warm-ivory': '#FAF0DC',
-        'text-dark': '#1A0A00',
+        'text-dark': '#1A1A1A',
         'text-muted': '#7A5C2E'
       },
       fontFamily: {

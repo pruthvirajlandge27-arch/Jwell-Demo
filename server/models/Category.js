@@ -8,6 +8,10 @@ const CategorySchema = new mongoose.Schema({
   coverImage: { type: String },
   isActive: { type: Boolean, default: true },
   sortOrder: { type: Number, default: 0 },
+  subcategories: [{
+    name: { type: String, required: true },
+    slug: { type: String, required: true }
+  }],
   createdAt: { type: Date, default: Date.now }
 });
 

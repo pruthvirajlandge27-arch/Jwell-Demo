@@ -11,7 +11,7 @@ const VisitUs = () => {
         <div className="absolute inset-0 bg-black/40 z-10"></div>
         <img 
           src="/images/luxury_showroom.png" 
-          alt="Bhamare Jewellers Luxury Showroom" 
+          alt="Kubde Jewellers Luxury Showroom" 
           className="w-full h-full object-cover object-right opacity-60"
         />
       </div>
@@ -53,8 +53,8 @@ const VisitUs = () => {
                 <div>
                   <h4 className="text-gold-light font-label font-bold text-[10px] tracking-[0.2em] uppercase mb-2">Location</h4>
                   <p className="text-warm-ivory/90 leading-relaxed text-sm md:text-base">
-                    Jayhind Chowk, Near New Rajrajeshwar Temple,<br />
-                    Akola, Maharashtra 444001
+                    Kubde Heights, Ambadevi Road,<br />
+                    Amravati, Maharashtra 444601
                   </p>
                 </div>
               </div>
@@ -78,8 +78,8 @@ const VisitUs = () => {
                 </div>
                 <div>
                   <h4 className="text-gold-light font-label font-bold text-[10px] tracking-[0.2em] uppercase mb-2">Direct Inquiry</h4>
-                  <p className="text-warm-ivory/90 text-sm md:text-base font-medium mb-1">+91 98765 43210</p>
-                  <p className="text-warm-ivory/60 text-xs">+91 76543 21098</p>
+                  <p className="text-warm-ivory/90 text-sm md:text-base font-medium mb-1">+91 80803 00464</p>
+                  <p className="text-warm-ivory/60 text-xs">+91 80803 00464</p>
                 </div>
               </div>
             </div>
@@ -103,21 +103,21 @@ const VisitUs = () => {
                 <div className="absolute inset-0 border-2 border-gold-primary/10 rounded-[1.5rem] pointer-events-none z-10"></div>
                 
                 <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3732.0415279058457!2d76.98793447432963!3d20.708538198701795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd731f50a98f645%3A0x2c7c9984842db7ed!2sBhamare%20jewellers!5e0!3m2!1sen!2sin!4v1779792833050!5m2!1sen!2sin" 
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d477003.764304936!2d77.750699!3d20.928732!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd6a548a828fb15%3A0x9ac9ee73d763cbbf!2sKubde%20Jewellers%20%3A%20Your%20Trusted%20Jewellery%20Store%20%26%20Jeweller!5e0!3m2!1sen!2sus!4v1784197312033!5m2!1sen!2sus" 
                   width="100%" 
                   height="100%" 
                   style={{ border: 0, filter: "grayscale(20%) sepia(20%) hue-rotate(-20deg) contrast(110%)" }} 
                   allowFullScreen="" 
                   loading="lazy" 
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Bhamare Jewellers Location"
+                  title="Kubde Jewellers Location"
                   className="transition-transform duration-1000 group-hover:scale-105"
                 ></iframe>
 
                 {/* Floating Action Button */}
                 <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20">
                   <a 
-                    href="https://maps.google.com" 
+                    href="https://www.google.com/maps?q=Kubde+Jewellers+Amravati" 
                     target="_blank" 
                     rel="noreferrer"
                     className="btn-gold !py-4 !px-8 flex items-center gap-3 backdrop-blur-md shadow-2xl hover:shadow-[0_10px_30px_rgba(212,175,55,0.4)]"

@@ -7,9 +7,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        'admin-bg': '#0F0A00',
-        'admin-sidebar': '#2C0A0A',
-        'admin-card': '#1C1005',
+        'admin-bg': '#120002',
+        'admin-sidebar': '#2a0409',
+        'admin-card': '#1e0306',
         'gold-primary': '#D4AF37',
         'gold-hover': '#B8960C',
         'text-light': '#FDF6E3',

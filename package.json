@@ -1,7 +1,7 @@
 {
-  "name": "bhamare-jewellers",
+  "name": "kubde-jewellers",
   "version": "1.0.0",
-  "description": "Bhamare Jewellers website and admin panel",
+  "description": "Kubde Jewellers website and admin panel",
   "main": "index.js",
   "scripts": {
     "dev": "concurrently \"npm run server\" \"npm run client\" \"npm run admin\"",

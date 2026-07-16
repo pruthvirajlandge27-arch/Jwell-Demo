@@ -1,18 +1,27 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import LeadCaptureGate from '../components/LeadCaptureGate';
 import HeroSection from '../components/HeroSection';
-import TrustBar from '../components/TrustBar';
 import CollectionsGrid from '../components/CollectionsGrid';
-import WhyChooseUs from '../components/WhyChooseUs';
-import FeaturedBanners from '../components/FeaturedBanners';
-import TestimonialsSlider from '../components/TestimonialsSlider';
-import VisitUs from '../components/VisitUs';
-import ContactForm from '../components/ContactForm';
 import ProductCard from '../components/ProductCard';
+import WhyChooseUs from '../components/WhyChooseUs';
+import AboutAndSocial from '../components/AboutAndSocial';
+import StoreAndContact from '../components/StoreAndContact';
 import { useJewellery } from '../context/JewelleryContext';
 import { motion } from 'framer-motion';
 
 const Home = () => {
   const { featuredJewellery } = useJewellery();
+  const [activeCategory, setActiveCategory] = useState('All');
+  
+  // Track if user has unlocked the catalogue via the hero form
+  const [hasAccess, setHasAccess] = useState(() => {
+    return sessionStorage.getItem('catalogueAccess') === 'true';
+  });
+
+  const handleAccessGranted = () => {
+    setHasAccess(true);
+    sessionStorage.setItem('catalogueAccess', 'true');
+  };
 
   useEffect(() => {
     const hash = window.location.hash;
@@ -28,70 +37,83 @@ const Home = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  // Extract unique category names dynamically from the database content
+  const dynamicCategories = ['All', ...new Set(
+    (featuredJewellery || [])
+      .map(item => item.category?.name)
+      .filter(Boolean)
+  )];
+
+  const filteredJewellery = activeCategory === 'All' 
+    ? featuredJewellery 
+    : featuredJewellery?.filter(item => item.category?.name === activeCategory);
+
   return (
-    <div className="bg-transparent">
-      <HeroSection />
-      
-      {/* Dynamic Collections Grid Section */}
-      <CollectionsGrid />
-      
-      {/* Brand Highlights Section */}
-      <WhyChooseUs />
-      
-      {/* Featured Jewellery Grid */}
-      {featuredJewellery && featuredJewellery.length > 0 && (
-        <section className="py-28 bg-[#180205]/40 border-t border-b border-gold-primary/10 relative">
-          {/* Subtle gold glowing backdrop */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gold-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
-
-          <div className="container mx-auto px-4 md:px-8">
-            <div className="text-center mb-20">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="space-y-4"
-              >
-                <span className="text-gold-accent font-label text-xs tracking-[0.25em] uppercase block">HANDPICKED FOR YOU</span>
-                <h2 className="text-4xl sm:text-5xl md:text-6xl font-heading font-medium text-white text-glow-gold">Featured Pieces</h2>
-                <div className="w-20 h-[1px] bg-gradient-to-r from-transparent via-gold-primary to-transparent mx-auto"></div>
-              </motion.div>
-            </div>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-              {featuredJewellery.slice(0, 8).map(product => (
-                <ProductCard key={product._id} product={product} />
-              ))}
-            </div>
-            
-            {featuredJewellery.length > 8 && (
-              <div className="text-center mt-16">
-                <button 
-                  onClick={() => {
-                    const contactSection = document.getElementById('contact');
-                    if (contactSection) {
-                      contactSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
-                  className="btn-outline"
-                >
-                  View All Featured Pieces
-                </button>
-              </div>
-            )}
-          </div>
-        </section>
+    <div className="bg-bg-primary text-text-primary">
+      {!hasAccess && (
+        <LeadCaptureGate onAccessGranted={handleAccessGranted} hasAccess={hasAccess} />
       )}
+      
+      {/* Hide everything below until user submits the lead form */}
+      {hasAccess && (
+        <>
+          {/* New Screenshot-based Hero Section */}
+          <HeroSection />
 
-      {/* Testimonials Review Slider */}
-      <TestimonialsSlider />
-      
-      {/* Showroom Visit Location */}
-      <VisitUs />
-      
-      {/* Appointment Contact Form */}
-      <ContactForm />
+          {/* Featured Collections Section */}
+          <CollectionsGrid />
+          
+          {/* Featured Jewellery Grid (Keeping this as it was recently requested) */}
+          {featuredJewellery && featuredJewellery.length > 0 && (
+            <section id="products" className="py-20 bg-white relative">
+              <div className="container mx-auto px-4 md:px-8">
+                <div className="text-center mb-12">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="space-y-4"
+                  >
+                    <h2 className="text-4xl md:text-5xl font-heading font-semibold text-[#120002]">Featured Pieces</h2>
+                    <div className="w-20 h-[2px] bg-gold-primary mx-auto"></div>
+                  </motion.div>
+                  
+                  {/* Dynamic Database Filter Pills */}
+                  <div className="flex flex-wrap justify-center gap-3 mt-8">
+                    {dynamicCategories.map((cat) => (
+                      <button 
+                        key={cat} 
+                        onClick={() => setActiveCategory(cat)}
+                        className={`px-6 py-2 rounded-full border border-gray-300 font-label text-sm transition-colors ${activeCategory === cat ? 'bg-[#120002] text-white border-[#120002]' : 'bg-transparent text-[#120002] hover:border-[#120002]'}`}
+                      >
+                        {cat}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                  {filteredJewellery.slice(0, 8).map(product => (
+                    <ProductCard key={product._id} product={product} />
+                  ))}
+                </div>
+                
+                {filteredJewellery.length === 0 && (
+                  <div className="text-center py-10 text-gray-500">
+                    No items found for this category.
+                  </div>
+                )}
+              </div>
+            </section>
+          )}
+
+          {/* New Sections based on screenshot */}
+          <WhyChooseUs />
+          <AboutAndSocial />
+          <StoreAndContact />
+        </>
+      )}
     </div>
   );
 };

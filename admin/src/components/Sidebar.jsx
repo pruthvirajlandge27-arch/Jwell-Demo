@@ -21,7 +21,7 @@ const Sidebar = () => {
   return (
     <div className="w-64 bg-admin-sidebar text-text-light flex flex-col border-r border-gold-primary/20">
       <div className="h-16 flex items-center justify-center border-b border-gold-primary/20">
-        <h2 className="text-xl font-heading text-gold-primary">Bhamare Jewellers</h2>
+        <h2 className="text-xl font-heading text-gold-primary">Kubde Jewellers</h2>
       </div>
       
       <div className="flex-1 overflow-y-auto py-4">

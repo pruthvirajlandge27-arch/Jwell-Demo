@@ -34,8 +34,8 @@ const seedDB = async () => {
     await Admin.deleteMany();
     console.log('Admins cleared');
     
-    const email = process.env.ADMIN_EMAIL || 'admin@bhamarejewellers.com';
-    const password = process.env.ADMIN_PASSWORD || 'BhamareAdmin@2024';
+    const email = process.env.ADMIN_EMAIL || 'admin@kubdejewellers.com';
+    const password = process.env.ADMIN_PASSWORD || 'KubdeAdmin@2024';
     
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);

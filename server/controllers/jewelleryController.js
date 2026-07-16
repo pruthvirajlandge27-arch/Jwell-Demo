@@ -4,7 +4,7 @@ const Category = require('../models/Category');
 const { cloudinary } = require('../middleware/uploadMiddleware');
 
 const getJewellery = asyncHandler(async (req, res) => {
-  const { category, featured, all } = req.query;
+  const { category, subcategory, featured, all } = req.query;
   let query = {};
 
   if (all !== 'true') {
@@ -18,6 +18,10 @@ const getJewellery = asyncHandler(async (req, res) => {
     } else {
       return res.json([]);
     }
+  }
+
+  if (subcategory) {
+    query.subcategory = subcategory;
   }
 
   if (featured === 'true') {

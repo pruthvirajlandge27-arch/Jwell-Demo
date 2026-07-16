@@ -12,7 +12,7 @@ const TestimonialsSlider = () => {
       id: 1,
       name: 'Priya Sharma',
       location: 'Akola',
-      text: 'Bhamare Jewellers has been our family jeweller for over 15 years. Their bridal necklace designs are uniquely stunning and the purity of gold is unmatched.',
+      text: 'Kubde Jewellers has been our family jeweller for over 15 years. Their bridal necklace designs are uniquely stunning and the purity of gold is unmatched.',
       rating: 5,
       image: '/images/bridal_collection.png'
     },
@@ -36,7 +36,7 @@ const TestimonialsSlider = () => {
       id: 4,
       name: 'Kavita Joshi',
       location: 'Pune',
-      text: 'I travel from Pune specifically to buy from Bhamare. Their modern styling paired with traditional roots makes every pendant look exquisite.',
+      text: 'I travel from Pune specifically to buy from Kubde. Their modern styling paired with traditional roots makes every pendant look exquisite.',
       rating: 5,
       image: '/images/cat_pendants.png'
     },

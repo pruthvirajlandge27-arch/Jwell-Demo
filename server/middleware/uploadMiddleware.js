@@ -12,7 +12,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
-    folder: 'bhamare-jewellers',
+    folder: 'kubde-jewellers',
     allowedFormats: ['jpeg', 'png', 'jpg', 'webp'],
   }
 });

@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // Health check route for Render
 app.get('/', (req, res) => {
-  res.status(200).json({ message: 'Bhamare Jewellers API is running flawlessly' });
+  res.status(200).json({ message: 'Kubde Jewellers API is running flawlessly' });
 });
 
 // Mount routes

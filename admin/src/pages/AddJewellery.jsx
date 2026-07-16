@@ -14,9 +14,13 @@ const AddJewellery = () => {
   const [formData, setFormData] = useState({
     title: '',
     category: '',
+    subcategory: '',
     description: '',
     purity: '22K Gold',
     weight: '',
+    grossWeight: '',
+    netWeight: '',
+    productCode: '',
     tags: '',
     isFeatured: false,
     isActive: true
@@ -29,7 +33,11 @@ const AddJewellery = () => {
         const res = await axios.get(`${API_URL}/api/categories`);
         setCategories(res.data);
         if (res.data.length > 0) {
-          setFormData(prev => ({ ...prev, category: res.data[0]._id }));
+          setFormData(prev => ({ 
+            ...prev, 
+            category: res.data[0]._id,
+            subcategory: res.data[0].subcategories?.[0]?.slug || ''
+          }));
         }
       } catch (error) {
         toast.error('Failed to load categories');
@@ -40,10 +48,20 @@ const AddJewellery = () => {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData({
-      ...formData,
-      [name]: type === 'checkbox' ? checked : value
-    });
+    
+    if (name === 'category') {
+      const selectedCat = categories.find(c => c._id === value);
+      setFormData(prev => ({
+        ...prev,
+        category: value,
+        subcategory: selectedCat?.subcategories?.[0]?.slug || ''
+      }));
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        [name]: type === 'checkbox' ? checked : value
+      }));
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -118,7 +136,7 @@ const AddJewellery = () => {
         <div className="space-y-4">
           <h2 className="text-lg font-heading text-text-light border-b border-gold-primary/20 pb-2">Basic Info</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div>
               <label className="block text-sm font-medium text-text-muted mb-1">Title *</label>
               <input type="text" name="title" required value={formData.title} onChange={handleChange} className="input-gold" placeholder="e.g. 22K Gold Bridal Necklace" />
@@ -129,6 +147,16 @@ const AddJewellery = () => {
               <select name="category" required value={formData.category} onChange={handleChange} className="input-gold appearance-none">
                 {categories.map(cat => (
                   <option key={cat._id} value={cat._id}>{cat.name}</option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-text-muted mb-1">Subcategory *</label>
+              <select name="subcategory" value={formData.subcategory} onChange={handleChange} className="input-gold appearance-none">
+                <option value="">No Subcategory</option>
+                {(categories.find(c => c._id === formData.category)?.subcategories || []).map(sub => (
+                  <option key={sub.slug} value={sub.slug}>{sub.name}</option>
                 ))}
               </select>
             </div>
@@ -155,13 +183,28 @@ const AddJewellery = () => {
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-text-muted mb-1">Weight</label>
-              <input type="text" name="weight" value={formData.weight} onChange={handleChange} className="input-gold" placeholder="e.g. 15.5g" />
+              <label className="block text-sm font-medium text-text-muted mb-1">Product Code</label>
+              <input type="text" name="productCode" value={formData.productCode} onChange={handleChange} className="input-gold" placeholder="e.g. #Tpc/141" />
             </div>
             
             <div>
               <label className="block text-sm font-medium text-text-muted mb-1">Tags</label>
               <input type="text" name="tags" value={formData.tags} onChange={handleChange} className="input-gold" placeholder="wedding, daily-wear (comma separated)" />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-text-muted mb-1">Gross Weight</label>
+              <input type="text" name="grossWeight" value={formData.grossWeight} onChange={handleChange} className="input-gold" placeholder="e.g. 2.07g" />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-text-muted mb-1">Net Weight</label>
+              <input type="text" name="netWeight" value={formData.netWeight} onChange={handleChange} className="input-gold" placeholder="e.g. 1.9g" />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-text-muted mb-1">Total Weight (Legacy)</label>
+              <input type="text" name="weight" value={formData.weight} onChange={handleChange} className="input-gold" placeholder="e.g. 15.5g" />
             </div>
           </div>
 

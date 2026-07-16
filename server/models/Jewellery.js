@@ -10,9 +10,13 @@ const JewellerySchema = new mongoose.Schema({
     isPrimary: { type: Boolean, default: false }
   }],
   weight: { type: String },
+  grossWeight: { type: String },
+  netWeight: { type: String },
+  productCode: { type: String },
   purity: { type: String },
   price: { type: Number },
   tags: [String],
+  subcategory: { type: String },
   isActive: { type: Boolean, default: true },
   isFeatured: { type: Boolean, default: false },
   createdAt: { type: Date, default: Date.now },

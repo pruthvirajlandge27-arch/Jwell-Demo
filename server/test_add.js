@@ -6,7 +6,7 @@ async function test() {
     const loginRes = await fetch('http://localhost:5000/api/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: 'admin@bhamarejewellers.com', password: 'BhamareAdmin@2024' })
+      body: JSON.stringify({ email: 'admin@kubdejewellers.com', password: 'KubdeAdmin@2024' })
     });
     if (!loginRes.ok) throw new Error(await loginRes.text());
     const loginData = await loginRes.json();

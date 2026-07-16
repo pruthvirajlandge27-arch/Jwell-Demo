@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import WhatsAppFloat from './components/WhatsAppFloat';
 import Home from './pages/Home';
 import CollectionPage from './pages/CollectionPage';
+import ProductDetailPage from './pages/ProductDetailPage';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/collections/:slug" element={<CollectionPage />} />
+              <Route path="/product/:id" element={<ProductDetailPage />} />
             </Routes>
           </main>
           <Footer />

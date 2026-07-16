@@ -20,13 +20,13 @@ const ContactForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    const text = `Hello Bhamare Jewellers, I would like to book an appointment.
+    const text = `Hello Kubde Jewellers, I would like to book an appointment.
 Name: ${formData.name}
 Phone: ${formData.phone}
 Interested In: ${categories?.find(c => c.slug === formData.category)?.name || 'General Consultation'}
 Message: ${formData.message}`;
 
-    const whatsappUrl = `https://wa.me/919876543210?text=${encodeURIComponent(text)}`;
+    const whatsappUrl = `https://wa.me/918080300464?text=${encodeURIComponent(text)}`;
     window.open(whatsappUrl, '_blank');
     
     toast.success('Redirecting to WhatsApp Concierge...');
